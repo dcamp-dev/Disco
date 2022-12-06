@@ -1,8 +1,8 @@
 function solution(phone_number) {
-  let last = phone_number.substr(phone_number.length - 4);
-  let answer = '';
-  for (let i = 0; i < phone_number.length - 4; i++) answer += '*';
-  answer += last;
-
-  return answer;
+  return phone_number
+    .split('')
+    .map((v, i) => {
+      return i >= phone_number.length - 4 ? v : '*';
+    })
+    .join('');
 }
