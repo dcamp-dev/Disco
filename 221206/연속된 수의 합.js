@@ -1,8 +1,8 @@
 function solution(num, total) {
   var answer = [];
 
-  let x = -1000;
-  while (x < 1000) {
+  let x = -49;
+  while (x < 100) {
     if (num * x + parseInt((num * (num - 1)) / 2) == total) break;
     x += 1;
   }
