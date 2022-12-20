@@ -28,7 +28,6 @@ class Solution {
     public int[] solve(String[] report, Map<String, List<String>> map, String[] id_list, int k) {
         List<String> idList = Arrays.asList(id_list);
         int[] answer = new int[map.keySet().size()];
-        Arrays.fill(answer, 0);
         
         for (String r : report) {
             String from = r.split(" ")[0];
