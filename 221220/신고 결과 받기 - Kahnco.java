@@ -15,9 +15,8 @@ class Solution {
     public int[] solve(String[] report, String[] id_list, int k) {
         List<String> idList = Arrays.asList(id_list);
         int[] answer = new int[id_list.length];
+        
         Map<String, List<String>> map = new HashMap<>();
-        
-        
         for (String r : report) {
             String[] splitArray = r.split(" ");
             String from = splitArray[0];
