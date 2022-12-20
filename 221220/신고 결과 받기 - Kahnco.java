@@ -28,10 +28,10 @@ class Solution {
         }
         
         for (String id : map.keySet()) {
-            List<String> toList = map.get(id);
+            List<String> fromList = map.get(id);
             
             if (toList.size() >= k) {
-                for (String from2 : toList) {
+                for (String from2 : fromList) {
                     answer[idList.indexOf(from2)]++;
                 }
             }
