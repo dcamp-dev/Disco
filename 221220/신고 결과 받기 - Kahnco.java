@@ -29,9 +29,9 @@ class Solution {
         }
         
         for (String id : map.keySet()) {
-            if (map.get(id).size() >= k) {
-                List<String> toList = map.get(id);
-                
+            List<String> toList = map.get(id);
+            
+            if (toList.size() >= k) {
                 for (String from2 : toList) {
                     answer[idList.indexOf(from2)]++;
                 }
