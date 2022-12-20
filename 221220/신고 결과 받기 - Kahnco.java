@@ -5,38 +5,26 @@ class Solution {
         int[] answer = {};
         String[] duplicatedReport = removeDuplicates(report);
         
-        Map<String, List<String>> answerMap = new HashMap<String, List<String>>();
-        initValue(answerMap, id_list);
-        
-        return solve(duplicatedReport, answerMap, id_list, k);
+        return solve(duplicatedReport, id_list, k);
     }
-    
-    public void initValue(Map<String, List<String>> map, String[] id_list) {
-        for(String id: id_list) {
-            map.put(id, Collections.<String>emptyList());
-        }
-    }
-    
     public String[] removeDuplicates(String[] arr) {
-        HashSet<String> hashSet = new HashSet<>();
-        for(String item : arr){
-            hashSet.add(item);
-        }
+        HashSet<String> hashSet = new HashSet<>(Arrays.asList(arr));
         return hashSet.stream().toArray(String[]::new);
     }
     
-    public int[] solve(String[] report, Map<String, List<String>> map, String[] id_list, int k) {
+    public int[] solve(String[] report, String[] id_list, int k) {
         List<String> idList = Arrays.asList(id_list);
-        int[] answer = new int[map.keySet().size()];
+        int[] answer = new int[id_list.length];
+        Map<String, List<String>> map = new HashMap<>();
+        
         
         for (String r : report) {
             String from = r.split(" ")[0];
             String to = r.split(" ")[1];
             
-            List<String> temp = new ArrayList<>();
-            temp.addAll(map.get(to));
-            temp.add(from);
-            map.put(to, temp);
+            map
+                .computeIfAbsent(to, i -> new ArrayList<>())
+                .addAll(Arrays.asList(from));
         }
         
         for (String id : map.keySet()) {
