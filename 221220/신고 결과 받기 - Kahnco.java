@@ -19,12 +19,13 @@ class Solution {
         
         
         for (String r : report) {
-            String from = r.split(" ")[0];
-            String to = r.split(" ")[1];
+            String[] splitArray = r.split(" ");
+            String from = splitArray[0];
+            String to = splitArray[1];
             
             map
                 .computeIfAbsent(to, i -> new ArrayList<>())
-                .addAll(Arrays.asList(from));
+                .add(from);
         }
         
         for (String id : map.keySet()) {
