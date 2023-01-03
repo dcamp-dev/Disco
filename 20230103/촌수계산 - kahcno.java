@@ -1,18 +1,8 @@
-/******************************************************************************
-
-                            Online Java Compiler.
-                Code, Compile, Run and Debug java program online.
-Write your code in this editor and press "Run" button to execute it.
-
-*******************************************************************************/
-
 import java.io.*;
 import java.util.*;
 
 public class Main
 {
-    static int answer = -1;
-    
 	public static void main(String[] args) throws IOException {
 	    BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
 	    
@@ -39,8 +29,9 @@ public class Main
 	    
 	    boolean[] visited = new boolean[n+1];
 	    
-	    dfs(graph, visited, a, b, 0);
-	    System.out.println(answer);
+        int[] answer = {-1};
+	    dfs(graph, visited, a, b, 0, answer);
+	    System.out.println(answer[0]);
 	}
 	
 	public static void setGraph(List<Integer>[] graph, int m, StringTokenizer st, BufferedReader r) throws IOException {
@@ -55,10 +46,10 @@ public class Main
 	    }
 	}
 	
-	public static void dfs(List<Integer>[] graph, boolean[] visited, int start, int target, int distance) {
+	public static void dfs(List<Integer>[] graph, boolean[] visited, int start, int target, int distance, int[] answer) {
 	    if (start == target) {
-	        if (answer == -1 || distance < answer) {
-	            answer = distance;
+	        if (answer[0] == -1 || distance < answer[0]) {
+	            answer[0] = distance;
 	        }
 	        return;
 	    }
@@ -66,7 +57,7 @@ public class Main
 	    visited[start] = true;
 	    for (int next : graph[start]) {
 	        if (!visited[next]) {
-	            dfs(graph, visited, next, target, distance + 1);
+	            dfs(graph, visited, next, target, distance + 1, answer);
 	        }
 	    }
 	}
