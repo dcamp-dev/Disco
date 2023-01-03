@@ -18,18 +18,13 @@ public class Main
 	    int a = Integer.parseInt(st.nextToken());
 	    int b = Integer.parseInt(st.nextToken());
 	    
-	    if (a == b) {
-	        System.out.println(0);
-	        return;
-	    }
-	    
 	    int m = Integer.parseInt(r.readLine());
 	    
 	    setGraph(graph, m, st, r);
 	    
 	    boolean[] visited = new boolean[n+1];
 	    
-        int[] answer = {-1};
+	    int[] answer = {-1};
 	    dfs(graph, visited, a, b, 0, answer);
 	    System.out.println(answer[0]);
 	}
